@@ -18,7 +18,10 @@ in stdenv.mkDerivation {
     cp -r opt $out/
     cp -r usr/share $out/
 
+    cp $out/opt/Perimeter81/perimeter81 $out/bin/
+  '';
+  postFixup = ''
     substituteInPlace $out/share/applications/perimeter81.desktop \
       --replace "/opt/Perimeter81/perimeter81" $out/opt/Perimeter81/perimeter81
-  '';
+    '';
 }
